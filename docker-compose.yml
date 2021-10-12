@@ -1,0 +1,27 @@
+version: '3.1'
+
+services:
+  node1:
+    build:
+      context: ./node1
+    restart: always
+    ports:
+      - "8010:3000"
+    networks:
+      custom_network1:
+    volumes:
+      - ./node1/:/usr/src/app
+
+  node2:
+    build:
+      context: ./node2
+    restart: always
+    ports:
+      - "8011:3000"
+    networks:
+      custom_network1:
+    volumes:
+      - ./node2/:/usr/src/app
+
+networks:
+  custom_network1:
